@@ -24,25 +24,25 @@ class TasksController < ApplicationController
     redirect_to task_path(@task)
   end
 
-  # #--------
-  # def edit            # GET /tasks/:id/edit
-  # end
+  #--------
+  def edit            # GET /tasks/:id/edit
+  end
 
-  # def update          # PATCH /tasks/:id
-  #   @task.update(task_params)
-  #   # Will raise ActiveModel::ForbiddenAttributesError
+  def update          # PATCH /tasks/:id
+    @task.update(task_params)
+    # Will raise ActiveModel::ForbiddenAttributesError
 
-  #   # no need for app/views/tasks/update.html.erb
-  #   redirect_to task_path(@task)
-  # end
+    # no need for app/views/tasks/update.html.erb
+    redirect_to task_path(@task)
+  end
 
-  # #--------
-  # def destroy         # DELETE /tasks/:id
-  #   @task.destroy
+  #--------
+  def destroy         # DELETE /tasks/:id
+    @task.destroy
 
-  #   # no need for app/views/tasks/destroy.html.erb
-  #   redirect_to tasks_path
-  # end
+    # no need for app/views/tasks/destroy.html.erb
+    redirect_to tasks_path
+  end
 
   private
 
