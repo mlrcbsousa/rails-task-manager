@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
-  # Read (all)
-  get "tasks", to: "tasks#index"
+  # subset except CRUD
+  resources :tasks
 
-  # Create (2 steps)
-  get "tasks/new", to: "tasks#new"
-  post "tasks", to: "tasks#create"
+  # # Read (all)
+  # get "tasks", to: "tasks#index"
 
-  # NB: The `show` route needs to be *after* `new` route.
+  # # Create (2 steps)
+  # get "tasks/new", to: "tasks#new"
+  # post "tasks", to: "tasks#create"
+
+  # # NB: The `show` route needs to be *after* `new` route.
   # Read (one)
-  get "tasks/:id", to: "tasks#show", as: 'task'
+  # get "tasks/:id", to: "tasks#show", as: 'task'
 
   # Edit (2 steps)
-  get "tasks/:id/edit", to: "tasks#edit", as: 'task_edit'
-  patch "tasks/:id", to: "tasks#update"
+  # get "tasks/:id/edit", to: "tasks#edit", as: 'task_edit'
+  # patch "tasks/:id", to: "tasks#update"
 
-  # destroy
-  delete "tasks/:id", to: "tasks#destroy"
+  # # destroy
+  # delete "tasks/:id", to: "tasks#destroy"
 
   #--------------------------------
   # # 7 CRUD routes in one line
@@ -24,8 +27,6 @@ Rails.application.routes.draw do
   # # subset of CRUD
   # resources :restaurants, only: [:create, :index, :destroy]
 
-  # # subset except CRUD
-  # resources :restaurants, except: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
