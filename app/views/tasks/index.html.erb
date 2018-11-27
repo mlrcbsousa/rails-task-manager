@@ -1,1 +1,15 @@
-index.html.erb
+<!-- app/views/tasks/index.html.erb -->
+<h1>My Tasks</h1>
+<%= link_to 'New', tasks_new_path %>
+
+<ul class="list-inline">
+  <% @tasks.each do |task| %>
+    <li><div>
+      <h2><%= link_to task.title, task_path(task) %></h2>
+      <p><%= task.details %></p>
+      <%= link_to "Delete", task_path(task),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+    </div></li>
+  <% end %>
+</ul>
