@@ -18,10 +18,9 @@ class TasksController < ApplicationController
   def create          # POST /tasks
     @task = Task.new(task_params)
     @task.save
-    # Will raise ActiveModel::ForbiddenAttributesError
 
     # no need for app/views/tasks/create.html.erb
-    redirect_to task_path(@task)
+    redirect_to tasks_path
   end
 
   #--------
@@ -30,7 +29,7 @@ class TasksController < ApplicationController
 
   def update          # PATCH /tasks/:id
     @task.update(task_params)
-    # Will raise ActiveModel::ForbiddenAttributesError
+
 
     # no need for app/views/tasks/update.html.erb
     redirect_to task_path(@task)
@@ -53,6 +52,6 @@ class TasksController < ApplicationController
   def task_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:task).permit(:title, :details)
+    params.require(:task).permit(:title, :details, :completed)
   end
 end

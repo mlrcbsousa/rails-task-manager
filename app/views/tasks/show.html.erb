@@ -9,10 +9,10 @@
 
 <p class="details p-4"><%= @task.details %></p>
 
-
-<%= form_for @task do |f| %>
-  <%= f.check_box :completed %>
-  <%= f.label "This task is #{'not ' if !@task.completed }completed" %>
+<% if @task.completed %>
+  <i class="far fa-check-square"></i> This task is completed
+<% else %>
+  <i class="far fa-square"></i> This task is not completed
 <% end %>
 
 <hr>
