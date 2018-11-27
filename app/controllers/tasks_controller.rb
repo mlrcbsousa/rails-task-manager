@@ -10,19 +10,19 @@ class TasksController < ApplicationController
   end
 
   #--------
-  # def new             # GET /tasks/new
-  #   # We'll see that in a moment.
-  #   @task = Task.new
-  # end
+  def new             # GET /tasks/new
+    # We'll see that in a moment.
+    @task = Task.new
+  end
 
-  # def create          # POST /tasks
-  #   @task = Task.new(task_params)
-  #   @task.save
-  #   # Will raise ActiveModel::ForbiddenAttributesError
+  def create          # POST /tasks
+    @task = Task.new(task_params)
+    @task.save
+    # Will raise ActiveModel::ForbiddenAttributesError
 
-  #   # no need for app/views/tasks/create.html.erb
-  #   redirect_to task_path(@task)
-  # end
+    # no need for app/views/tasks/create.html.erb
+    redirect_to task_path(@task)
+  end
 
   # #--------
   # def edit            # GET /tasks/:id/edit

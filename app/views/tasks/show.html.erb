@@ -1,1 +1,23 @@
-show.html.erb
+<!-- app/views/tasks/show.html.erb -->
+<div class="header-box">
+  <h2><%= @task.title %></h2>
+
+  <%= link_to task_edit_path(@task), class: "btn btn-secondary" do %>
+    <i class="fas fa-pencil-alt"></i> Edit this task
+  <% end %>
+</div>
+
+<p class="details p-4"><%= @task.details %></p>
+
+
+<%= form_for @task do |f| %>
+  <%= f.check_box :completed %>
+  <%= f.label "This task is #{'not ' if !@task.completed }completed" %>
+<% end %>
+
+<hr>
+
+<%= link_to tasks_path do %>
+  <i class="fas fa-undo-alt"></i> Back to list
+<% end %>
+

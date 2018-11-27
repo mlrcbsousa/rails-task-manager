@@ -1,15 +1,24 @@
 <!-- app/views/tasks/index.html.erb -->
 <h1>My Tasks</h1>
-<%= link_to 'New', tasks_new_path %>
 
 <ul class="list-inline">
   <% @tasks.each do |task| %>
-    <li><div>
-      <h2><%= link_to task.title, task_path(task) %></h2>
-      <p><%= task.details %></p>
-      <%= link_to "Delete", task_path(task),
+    <li>
+      <%= form_for task do |f| %>
+        <%= f.check_box :completed %>
+        <%= link_to task.title, task_path(task) %>
+      -
+      <%= link_to task_path(task),
           method: :delete,
-          data: { confirm: "Are you sure?" } %>
-    </div></li>
+          data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
+<hr>
+
+<%= link_to tasks_new_path do %>
+  <i class="fas fa-plus"></i> Add a new task
+<% end %>
